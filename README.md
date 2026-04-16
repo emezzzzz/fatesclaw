@@ -1,7 +1,7 @@
 # fatesClaw
 
 `fatesClaw` is a public-ready toolkit for running OpenClaw on a Raspberry Pi 4B
-with a Fates-style hardware stack: Newhaven/Fates SSD1322 OLED, WM8731 ALSA
+with a Fates hardware stack: Newhaven/Fates SSD1322 OLED, WM8731 ALSA
 audio, three buttons, and three rotary encoders.
 
 The repository includes Raspberry Pi setup notes, Fates hardware bring-up
@@ -11,25 +11,12 @@ development notes, and a reusable OLED dashboard app.
 ## Target Hardware
 
 - Raspberry Pi 4B
-- Raspberry Pi OS Lite 64-bit
-- Fates board
-- Newhaven OLED model used by Fates, SSD1322-compatible
+- Raspberry Pi OS Lite 64-bit (not using it as norns, formatted SD card suggested)
+- Fates board from [okyeron](https://github.com/okyeron/fates)
+- Newhaven OLED model used by Fates, SSD1322-compatible (tested with [this model](https://newhavendisplay.com/2-7-inch-white-graphic-oled-module/))
 - WM8731 audio codec exposed through ALSA
 - 3 buttons and 3 rotary encoders
 - OpenClaw running locally on the Pi
-
-## Security Model
-
-This repository is designed for public release. It does not ship real OpenClaw
-configuration, provider credentials, session files, machine paths, SSH data, or
-local runtime state. All secrets must be supplied through ignored local env files
-or environment variables.
-
-Run the sanitizer before publishing:
-
-```bash
-./scripts/sanitize-repo-check.sh
-```
 
 ## Quickstart
 
@@ -85,4 +72,7 @@ The dashboard supports mock mode, real SSD1322 OLED mode through `luma.oled`,
 OpenClaw Gateway integration, env-based gateway auth, Fates evdev controls,
 keyboard fallback, Chat/Mind split views, an agent picker, and a Home heart
 animation. Audio bring-up is documented and verifiable, but voice interaction is
-not implemented.
+not implemented (yet). Claw is running with Minimax 2.7 through NVIDA API (free).
+
+This is a work in progress, very experimental. Next goal is to have audio implementation in/out and also make use of the fates I/O. 
+Further exploration could integrate more sound-oriented functions such as CV, audio recording, etc.
