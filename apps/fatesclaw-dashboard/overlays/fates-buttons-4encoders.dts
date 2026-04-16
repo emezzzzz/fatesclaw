@@ -1,0 +1,229 @@
+/dts-v1/;
+
+/ {
+	compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+
+	fragment@0 {
+		target-path = "/soc/gpio";
+
+		__overlay__ {
+
+			knob_pins4 {
+				brcm,pins = <0x1a 0x10>;
+				brcm,function = <0x00>;
+				brcm,pull = <0x02>;
+				phandle = <0x01>;
+			};
+		};
+	};
+
+	fragment@1 {
+		target-path = "/soc";
+
+		__overlay__ {
+
+			knob4 {
+				compatible = "rotary-encoder";
+				#address-cells = <0x01>;
+				#size-cells = <0x00>;
+				pinctrl-names = "default";
+				pinctrl-0 = <0x01>;
+				gpios = <0xffffffff 0x1a 0x01 0xffffffff 0x10 0x01>;
+				linux,axis = <0x00>;
+				rotary-encoder,relative-axis;
+				rotary-encoder,half-period;
+				phandle = <0x05>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target-path = "/soc/gpio";
+
+		__overlay__ {
+
+			knob_pins1 {
+				brcm,pins = <0x05 0x06>;
+				brcm,function = <0x00>;
+				brcm,pull = <0x02>;
+				phandle = <0x02>;
+			};
+		};
+	};
+
+	fragment@3 {
+		target-path = "/soc";
+
+		__overlay__ {
+
+			knob1 {
+				compatible = "rotary-encoder";
+				#address-cells = <0x01>;
+				#size-cells = <0x00>;
+				pinctrl-names = "default";
+				pinctrl-0 = <0x02>;
+				gpios = <0xffffffff 0x05 0x01 0xffffffff 0x06 0x01>;
+				linux,axis = <0x00>;
+				rotary-encoder,relative-axis;
+				rotary-encoder,half-period;
+				phandle = <0x06>;
+			};
+		};
+	};
+
+	fragment@4 {
+		target-path = "/soc/gpio";
+
+		__overlay__ {
+
+			knob_pins2 {
+				brcm,pins = <0x0d 0x0c>;
+				brcm,function = <0x00>;
+				brcm,pull = <0x02>;
+				phandle = <0x03>;
+			};
+		};
+	};
+
+	fragment@5 {
+		target-path = "/soc";
+
+		__overlay__ {
+
+			knob2 {
+				compatible = "rotary-encoder";
+				#address-cells = <0x01>;
+				#size-cells = <0x00>;
+				pinctrl-names = "default";
+				pinctrl-0 = <0x03>;
+				gpios = <0xffffffff 0x0d 0x01 0xffffffff 0x0c 0x01>;
+				linux,axis = <0x00>;
+				rotary-encoder,relative-axis;
+				rotary-encoder,half-period;
+				phandle = <0x07>;
+			};
+		};
+	};
+
+	fragment@6 {
+		target-path = "/soc/gpio";
+
+		__overlay__ {
+
+			knob_pins3 {
+				brcm,pins = <0x1b 0x16>;
+				brcm,function = <0x00>;
+				brcm,pull = <0x02>;
+				phandle = <0x04>;
+			};
+		};
+	};
+
+	fragment@7 {
+		target-path = "/soc";
+
+		__overlay__ {
+
+			knob3 {
+				compatible = "rotary-encoder";
+				#address-cells = <0x01>;
+				#size-cells = <0x00>;
+				pinctrl-names = "default";
+				pinctrl-0 = <0x04>;
+				gpios = <0xffffffff 0x1b 0x01 0xffffffff 0x16 0x01>;
+				linux,axis = <0x00>;
+				rotary-encoder,relative-axis;
+				rotary-encoder,half-period;
+				phandle = <0x08>;
+			};
+		};
+	};
+
+	fragment@8 {
+		target-path = "/";
+
+		__overlay__ {
+
+			keys {
+				compatible = "gpio-keys";
+				#address-cells = <0x01>;
+				#size-cells = <0x00>;
+				phandle = <0x09>;
+
+				button@24 {
+					linux,code = <0x01>;
+					gpios = <0xffffffff 0x18 0x01>;
+				};
+
+				button@25 {
+					linux,code = <0x02>;
+					gpios = <0xffffffff 0x19 0x01>;
+				};
+
+				button@23 {
+					linux,code = <0x03>;
+					gpios = <0xffffffff 0x17 0x01>;
+				};
+			};
+		};
+	};
+
+	__symbols__ {
+		knob_pins4 = "/fragment@0/__overlay__/knob_pins4";
+		knob4 = "/fragment@1/__overlay__/knob4";
+		knob_pins1 = "/fragment@2/__overlay__/knob_pins1";
+		knob1 = "/fragment@3/__overlay__/knob1";
+		knob_pins2 = "/fragment@4/__overlay__/knob_pins2";
+		knob2 = "/fragment@5/__overlay__/knob2";
+		knob_pins3 = "/fragment@6/__overlay__/knob_pins3";
+		knob0 = "/fragment@7/__overlay__/knob3";
+		keypad = "/fragment@8/__overlay__/keys";
+	};
+
+	__fixups__ {
+		gpio = "/fragment@1/__overlay__/knob4:gpios:0", "/fragment@1/__overlay__/knob4:gpios:12", "/fragment@3/__overlay__/knob1:gpios:0", "/fragment@3/__overlay__/knob1:gpios:12", "/fragment@5/__overlay__/knob2:gpios:0", "/fragment@5/__overlay__/knob2:gpios:12", "/fragment@7/__overlay__/knob3:gpios:0", "/fragment@7/__overlay__/knob3:gpios:12", "/fragment@8/__overlay__/keys/button@24:gpios:0", "/fragment@8/__overlay__/keys/button@25:gpios:0", "/fragment@8/__overlay__/keys/button@23:gpios:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@1 {
+
+			__overlay__ {
+
+				knob4 {
+					pinctrl-0 = <0x00>;
+				};
+			};
+		};
+
+		fragment@3 {
+
+			__overlay__ {
+
+				knob1 {
+					pinctrl-0 = <0x00>;
+				};
+			};
+		};
+
+		fragment@5 {
+
+			__overlay__ {
+
+				knob2 {
+					pinctrl-0 = <0x00>;
+				};
+			};
+		};
+
+		fragment@7 {
+
+			__overlay__ {
+
+				knob3 {
+					pinctrl-0 = <0x00>;
+				};
+			};
+		};
+	};
+};

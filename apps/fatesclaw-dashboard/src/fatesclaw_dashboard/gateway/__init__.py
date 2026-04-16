@@ -1,0 +1,2 @@
+"""Gateway integration for OpenClaw."""
+

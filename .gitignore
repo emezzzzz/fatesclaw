@@ -1,0 +1,50 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+!*.example.env
+config/*.env
+!config/*.env.example
+*.local
+*.secret
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+.openclaw/
+.codex/
+.ssh/
+.npmrc
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Runtime output
+logs/
+tmp/
+*.log
+*.pid
+*.wav
+*.flac
+*.mp3
+*.png
+!examples/oled/smoke-test-assets/README.md
+
+# Generated device tree overlays
+*.dtbo
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

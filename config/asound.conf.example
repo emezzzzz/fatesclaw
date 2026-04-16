@@ -1,0 +1,19 @@
+# Example ALSA configuration for systems where the Fates/WM8731 card is exposed
+# as the preferred default device.
+#
+# Do not install this blindly. First inspect:
+#   aplay -l
+#   arecord -l
+#
+# Replace <CARD_NAME_OR_INDEX> with the ALSA card name or numeric index found
+# on your system.
+
+pcm.!default {
+  type hw
+  card <CARD_NAME_OR_INDEX>
+}
+
+ctl.!default {
+  type hw
+  card <CARD_NAME_OR_INDEX>
+}

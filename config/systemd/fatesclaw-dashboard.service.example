@@ -1,0 +1,19 @@
+[Unit]
+Description=fatesClaw OLED dashboard
+After=network-online.target sound.target openclaw-gateway.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=<PI_USER>
+Group=<PI_USER>
+WorkingDirectory=<PROJECT_PATH>/apps/fatesclaw-dashboard
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-<PROJECT_PATH>/config/dashboard.env
+ExecStart=<PROJECT_PATH>/apps/fatesclaw-dashboard/.venv/bin/python -m fatesclaw_dashboard.main
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

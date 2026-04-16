@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenClaw Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=<PI_USER>
+Group=<PI_USER>
+WorkingDirectory=<OPENCLAW_INSTALL_PATH>
+EnvironmentFile=-<PROJECT_PATH>/config/openclaw.env
+Environment=NODE_ENV=production
+ExecStart=<OPENCLAW_COMMAND> gateway --host 127.0.0.1 --port 18789
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

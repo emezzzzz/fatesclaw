@@ -1,0 +1,120 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709", "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            knob1_pins: knob1_pins {
+                brcm,pins = <5 6>;
+                brcm,function = <0 0>;
+                brcm,pull = <2 2>;
+            };
+
+            knob2_pins: knob2_pins {
+                brcm,pins = <13 12>;
+                brcm,function = <0 0>;
+                brcm,pull = <2 2>;
+            };
+
+            knob3_pins: knob3_pins {
+                brcm,pins = <27 22>;
+                brcm,function = <0 0>;
+                brcm,pull = <2 2>;
+            };
+
+            knob4_pins: knob4_pins {
+                brcm,pins = <26 16>;
+                brcm,function = <0 0>;
+                brcm,pull = <2 2>;
+            };
+
+            button_pins: button_pins {
+                brcm,pins = <24 25 23>;
+                brcm,function = <0 0 0>;
+                brcm,pull = <2 2 2>;
+            };
+        };
+    };
+
+    fragment@1 {
+        target-path = "/soc";
+        __overlay__ {
+            knob1: knob1 {
+                compatible = "rotary-encoder";
+                pinctrl-names = "default";
+                pinctrl-0 = <&knob1_pins>;
+                gpios = <&gpio 5 1>, <&gpio 6 1>;
+                linux,axis = <0>;
+                rotary-encoder,relative-axis;
+                rotary-encoder,half-period;
+            };
+
+            knob2: knob2 {
+                compatible = "rotary-encoder";
+                pinctrl-names = "default";
+                pinctrl-0 = <&knob2_pins>;
+                gpios = <&gpio 13 1>, <&gpio 12 1>;
+                linux,axis = <0>;
+                rotary-encoder,relative-axis;
+                rotary-encoder,half-period;
+            };
+
+            knob3: knob3 {
+                compatible = "rotary-encoder";
+                pinctrl-names = "default";
+                pinctrl-0 = <&knob3_pins>;
+                gpios = <&gpio 27 1>, <&gpio 22 1>;
+                linux,axis = <0>;
+                rotary-encoder,relative-axis;
+                rotary-encoder,half-period;
+            };
+
+            knob4: knob4 {
+                compatible = "rotary-encoder";
+                pinctrl-names = "default";
+                pinctrl-0 = <&knob4_pins>;
+                gpios = <&gpio 26 1>, <&gpio 16 1>;
+                linux,axis = <0>;
+                rotary-encoder,relative-axis;
+                rotary-encoder,half-period;
+            };
+        };
+    };
+
+    fragment@2 {
+        target-path = "/";
+        __overlay__ {
+            keys: keys {
+                compatible = "gpio-keys";
+                pinctrl-names = "default";
+                pinctrl-0 = <&button_pins>;
+                #address-cells = <1>;
+                #size-cells = <0>;
+
+                button@24 {
+                    label = "fates-btn-left";
+                    linux,code = <1>;
+                    gpios = <&gpio 24 1>;
+                    debounce-interval = <20>;
+                };
+
+                button@25 {
+                    label = "fates-btn-enter";
+                    linux,code = <2>;
+                    gpios = <&gpio 25 1>;
+                    debounce-interval = <20>;
+                };
+
+                button@23 {
+                    label = "fates-btn-right";
+                    linux,code = <3>;
+                    gpios = <&gpio 23 1>;
+                    debounce-interval = <20>;
+                };
+            };
+        };
+    };
+};
