@@ -1,0 +1,16 @@
+name: sanitize
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  sanitize-repo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run sanitize-repo-check.sh
+        run: ./scripts/sanitize-repo-check.sh

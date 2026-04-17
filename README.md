@@ -49,7 +49,7 @@ Run the dashboard in development mode:
 
 ## Repository Layout
 
-- `docs/`: setup, hardware, OpenClaw, dashboard, Codex, security, and troubleshooting guides.
+- `docs/`: setup, hardware, OpenClaw, dashboard, Codex, and troubleshooting guides.
 - `scripts/`: Pi bootstrap, hardware enablement, verification, install, and sanitization helpers.
 - `config/`: placeholder-only env and systemd examples.
 - `apps/fatesclaw-dashboard/`: Python OLED dashboard app and tests.
