@@ -1,6 +1,6 @@
 # fatesClaw
 
-`fatesClaw` is a public-ready toolkit for running OpenClaw on a Raspberry Pi 4B
+`fatesClaw` is a toolkit for running OpenClaw on a Raspberry Pi 4B
 with a Fates hardware stack: Newhaven/Fates SSD1322 OLED, WM8731 ALSA
 audio, three buttons, and three rotary encoders.
 
