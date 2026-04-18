@@ -12,7 +12,8 @@ development notes, and a reusable OLED dashboard app.
 
 - Raspberry Pi 4B
 - Raspberry Pi OS Lite 64-bit (not using it as norns, formatted SD card suggested)
-- Fates board from [okyeron](https://github.com/okyeron/fates)
+- Fates board from [okyeron](https://github.com/okyeron/fates) with 2x2 interface + headphones output
+1/8in stereo headphone out
 - Newhaven OLED model used by Fates, SSD1322-compatible (tested with [this model](https://newhavendisplay.com/2-7-inch-white-graphic-oled-module/))
 - WM8731 audio codec exposed through ALSA
 - 3 buttons and 3 rotary encoders
